@@ -1,66 +1,48 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
+# import pandas and plotly libraries 
 import pandas as pd
 import plotly.express as px
 
 
-# In[2]:
-
-
+# creating variable URL
 url = 'http://api.open-notify.org/iss-now.json'
 
 
-# In[3]:
-
-
+# creating pandas dataframe
 df = pd.read_json(url)
 
 
-# In[4]:
-
-
+# viewing the created dataframe
 df
 
 
-# In[5]:
-
-
+# modifying the dataframe to make it easier to read 
 df['latitude'] = df.loc['latitude','iss_position']
 df['longitude']= df.loc['longitude','iss_position']
 df.reset_index(inplace=True)
 
 
-# In[6]:
-
-
+# viewing the modidfied dataframe
 df
 
 
-# In[7]:
-
-
+# drop unecessary column
 df = df.drop(['index'], axis=1)
 
 
-# In[8]:
-
-
+# viewing the dataframe
 df
 
 
-# In[9]:
-
-
+# Plotting location of ISS on the map
 fig = px.scatter_geo(df,lat='latitude',
                     lon='longitude')
 fig.show()
 
 
-# In[ ]:
+# The location of the ISS is displayed after a few seconds
 
 
 
