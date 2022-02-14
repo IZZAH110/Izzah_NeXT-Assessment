@@ -73,7 +73,7 @@ const submitForm = () => {
 		}
 	});
 }
-
+/*to get the timestamp for every 10 minutes 1 hour before*/
 const beforeHour = timestamp => {
 
 	let paramString = "";
@@ -91,6 +91,7 @@ const beforeHour = timestamp => {
 	return paramString;
 }
 
+/*to get the timestamp for every 10 minutes 1 hour after*/
 const afterHour = timestamp => {
 
 	let paramString = "";
