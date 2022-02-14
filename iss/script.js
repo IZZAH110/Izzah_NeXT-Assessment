@@ -1,6 +1,7 @@
 const iss_api_url = "https://api.wheretheiss.at/v1/satellites/25544/positions";
 const iss_coordinate = "https://api.wheretheiss.at/v1/coordinates/";
 
+/**input date and time*/
 const submitForm = () => {
 	const date = $("#date").val();
 	const time = $("#time").val();
@@ -9,7 +10,8 @@ const submitForm = () => {
 	const timestamp = convertToTimestamp(newDate);
 
 	console.log(beforeHour(timestamp));
-
+	
+	/*connecting with the api server*/
 	$.ajax({
 		url: iss_api_url,
 		data: {
@@ -20,6 +22,7 @@ const submitForm = () => {
 			  let long = item.longitude;
 			  let lati = item.latitude;
 			  let date = convertFromTimestamp(item.timestamp);
+			/*display the data*/
 			  $.ajax({
 					url: iss_coordinate + lati + "," + long,
 					success: function(res){
